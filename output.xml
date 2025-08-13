@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.1 (Python 3.13.5 on win32)" generated="2025-08-13T05:04:15.458395" rpa="false" schemaversion="5">
+<suite id="s1" name="Delete" source="E:\มหาลัย\โปรเจค\Robot_Pos\suppliers_tests\delete.robot">
+<kw name="Open Browser To Login Page" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-08-13T05:04:15.720388" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-08-13T05:04:15.720159" elapsed="2.015506"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-08-13T05:04:17.735856" elapsed="0.020709"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${TIMEOUT}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-08-13T05:04:17.756725" elapsed="0.001124"/>
+</kw>
+<status status="PASS" start="2025-08-13T05:04:15.719601" elapsed="2.038367"/>
+</kw>
+<test id="s1-t1" name="ลบซัพพลายเออร์" line="21">
+<kw name="Login And Go To Suppliers Page" type="SETUP">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=input[name='username']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-13T05:04:17.759109" elapsed="0.028333"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-13T05:04:17.787910" level="INFO">Typing text 'admin' into text field 'css=input[name='username']'.</msg>
+<arg>css=input[name='username']</arg>
+<arg>${VALID USER}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-13T05:04:17.787590" elapsed="0.071852"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-13T05:04:17.859929" level="INFO">Typing text '12345678' into text field 'css=input[name='password']'.</msg>
+<arg>css=input[name='password']</arg>
+<arg>${VALID PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-13T05:04:17.859644" elapsed="0.066576"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-08-13T05:04:17.926531" level="INFO">Clicking button 'css=button[type='submit']'.</msg>
+<arg>css=button[type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-13T05:04:17.926364" elapsed="0.083448"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//span[contains(text(),'จัดการ')]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-13T05:04:18.009969" elapsed="0.225581"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-13T05:04:18.235855" level="INFO">Clicking element 'xpath=//span[contains(text(),'จัดการ')]'.</msg>
+<arg>xpath=//span[contains(text(),'จัดการ')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-13T05:04:18.235694" elapsed="0.054185"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-13T05:04:18.290183" level="INFO">Clicking element 'xpath=//a[contains(text(),'จัดการซัพพลายเออร์')]'.</msg>
+<arg>xpath=//a[contains(text(),'จัดการซัพพลายเออร์')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-13T05:04:18.290024" elapsed="0.071415"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${SEARCH_SUPPLIER}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-13T05:04:18.361581" elapsed="0.037281"/>
+</kw>
+<status status="PASS" start="2025-08-13T05:04:17.758867" elapsed="0.640093"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-08-13T05:04:18.399429" level="INFO">${name} = ทดสอบซัพพลายเออร์ 1234</msg>
+<var>${name}</var>
+<arg>ทดสอบซัพพลายเออร์ 1234</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-08-13T05:04:18.399246" elapsed="0.000211"/>
+</kw>
+<kw name="Search Supplier By Name">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${SEARCH_SUPPLIER}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-13T05:04:18.400087" elapsed="0.021586"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${SEARCH_SUPPLIER}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-13T05:04:18.421837" elapsed="0.035412"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-13T05:04:18.457616" level="INFO">Typing text 'ทดสอบซัพพลายเออร์ 1234' into text field 'id=supplier-search-input'.</msg>
+<arg>${SEARCH_SUPPLIER}</arg>
+<arg>${name}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-13T05:04:18.457391" elapsed="0.112848"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-08-13T05:04:18.570704" level="INFO">Sending key(s) ('ENTER',) to id=supplier-search-input element.</msg>
+<msg time="2025-08-13T05:04:18.837722" level="INFO">Pressing special key ENTER to element.</msg>
+<msg time="2025-08-13T05:04:18.837805" level="INFO">Releasing special key ENTER.</msg>
+<arg>${SEARCH_SUPPLIER}</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-08-13T05:04:18.570386" elapsed="0.270981"/>
+</kw>
+<kw name="Wait Table Idle">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Wait Until Element Is Not Visible" owner="SeleniumLibrary">
+<arg>${SPINNERS}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" start="2025-08-13T05:04:18.841856" elapsed="0.006637"/>
+</kw>
+<arg>Wait Until Element Is Not Visible</arg>
+<arg>${SPINNERS}</arg>
+<arg>5s</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-08-13T05:04:18.841746" elapsed="0.006826"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-13T05:04:19.149040" level="INFO">Slept 300 milliseconds.</msg>
+<arg>0.3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-13T05:04:18.848672" elapsed="0.300486"/>
+</kw>
+<status status="PASS" start="2025-08-13T05:04:18.841537" elapsed="0.307722"/>
+</kw>
+<arg>${name}</arg>
+<status status="PASS" start="2025-08-13T05:04:18.399742" elapsed="0.749560"/>
+</kw>
+<kw name="Click Delete Supplier Button">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<msg time="2025-08-13T05:04:19.150334" level="FAIL">Variable '${BTN_DELETE_SUPPLIER}' not found.</msg>
+<arg>${BTN_DELETE_SUPPLIER}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="FAIL" start="2025-08-13T05:04:19.149862" elapsed="0.000511">Variable '${BTN_DELETE_SUPPLIER}' not found.</status>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${BTN_DELETE_SUPPLIER}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="NOT RUN" start="2025-08-13T05:04:19.150474" elapsed="0.000021"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${BTN_DELETE_SUPPLIER}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-08-13T05:04:19.150555" elapsed="0.000016"/>
+</kw>
+<kw name="Wait Table Idle">
+<status status="NOT RUN" start="2025-08-13T05:04:19.150779" elapsed="0.000023"/>
+</kw>
+<status status="FAIL" start="2025-08-13T05:04:19.149623" elapsed="0.001260">Variable '${BTN_DELETE_SUPPLIER}' not found.</status>
+</kw>
+<kw name="Confirm Delete Dialog">
+<status status="NOT RUN" start="2025-08-13T05:04:19.151078" elapsed="0.000023"/>
+</kw>
+<kw name="Search Supplier By Name">
+<arg>${name}</arg>
+<status status="NOT RUN" start="2025-08-13T05:04:19.151280" elapsed="0.000030"/>
+</kw>
+<kw name="Verify Supplier Not Exists">
+<arg>${name}</arg>
+<status status="NOT RUN" start="2025-08-13T05:04:19.151427" elapsed="0.000021"/>
+</kw>
+<status status="FAIL" start="2025-08-13T05:04:17.758057" elapsed="1.393526">Variable '${BTN_DELETE_SUPPLIER}' not found.</status>
+</test>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-08-13T05:04:19.152083" elapsed="2.144282"/>
+</kw>
+<status status="FAIL" start="2025-08-13T05:04:15.459802" elapsed="5.836636"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Delete" id="s1" pass="0" fail="1" skip="0">Delete</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-08-13T05:04:15.460013" level="ERROR">Error in file 'E:\มหาลัย\โปรเจค\Robot_Pos\suppliers_tests\delete.robot' on line 16: Setting variable '${BTN_DELETE_SUPPLIER} xpath=//button[@title="ลบซัพพลายเออร์" or starts-with(@id,"delete-supplier-button-")]' failed: Invalid variable name '${BTN_DELETE_SUPPLIER} xpath=//button[@title="ลบซัพพลายเออร์" or starts-with(@id,"delete-supplier-button-")]'.</msg>
+</errors>
+</robot>
