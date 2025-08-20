@@ -1,177 +1,358 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.1 (Python 3.13.5 on win32)" generated="2025-08-13T05:04:15.458395" rpa="false" schemaversion="5">
-<suite id="s1" name="Delete" source="E:\มหาลัย\โปรเจค\Robot_Pos\suppliers_tests\delete.robot">
+<robot generator="Robot 7.3.1 (Python 3.13.5 on win32)" generated="2025-08-18T18:04:24.072558" rpa="false" schemaversion="5">
+<suite id="s1" name="Create" source="E:\มหาลัย\โปรเจค\Robot_Pos\promotions_tests\create.robot">
 <kw name="Open Browser To Login Page" type="SETUP">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-08-13T05:04:15.720388" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173'.</msg>
+<msg time="2025-08-18T18:04:24.253387" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173'.</msg>
 <arg>${BASE_URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-08-13T05:04:15.720159" elapsed="2.015506"/>
+<status status="PASS" start="2025-08-18T18:04:24.253154" elapsed="1.553240"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-08-13T05:04:17.735856" elapsed="0.020709"/>
+<status status="PASS" start="2025-08-18T18:04:25.806595" elapsed="0.030832"/>
 </kw>
 <kw name="Set Selenium Timeout" owner="SeleniumLibrary">
 <arg>${TIMEOUT}</arg>
 <doc>Sets the timeout that is used by various keywords.</doc>
-<status status="PASS" start="2025-08-13T05:04:17.756725" elapsed="0.001124"/>
+<status status="PASS" start="2025-08-18T18:04:25.837706" elapsed="0.002059"/>
 </kw>
-<status status="PASS" start="2025-08-13T05:04:15.719601" elapsed="2.038367"/>
+<status status="PASS" start="2025-08-18T18:04:24.252549" elapsed="1.587362"/>
 </kw>
-<test id="s1-t1" name="ลบซัพพลายเออร์" line="21">
-<kw name="Login And Go To Suppliers Page" type="SETUP">
+<test id="s1-t1" name="สร้างโปรโมชั่น (เลือกสินค้า+ล็อต กำหนดช่วงเวลา และราคาโปร)" line="57">
+<kw name="Login To System" type="SETUP">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>css=input[name='username']</arg>
+<arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-08-13T05:04:17.759109" elapsed="0.028333"/>
+<status status="PASS" start="2025-08-18T18:04:25.842545" elapsed="0.016373"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-08-13T05:04:17.787910" level="INFO">Typing text 'admin' into text field 'css=input[name='username']'.</msg>
+<msg time="2025-08-18T18:04:25.859314" level="INFO">Typing text 'admin1' into text field 'css=input[name='username']'.</msg>
 <arg>css=input[name='username']</arg>
 <arg>${VALID USER}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-08-13T05:04:17.787590" elapsed="0.071852"/>
+<status status="PASS" start="2025-08-18T18:04:25.859066" elapsed="0.058674"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-08-13T05:04:17.859929" level="INFO">Typing text '12345678' into text field 'css=input[name='password']'.</msg>
+<msg time="2025-08-18T18:04:25.918075" level="INFO">Typing text '12345678' into text field 'css=input[name='password']'.</msg>
 <arg>css=input[name='password']</arg>
 <arg>${VALID PASSWORD}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-08-13T05:04:17.859644" elapsed="0.066576"/>
+<status status="PASS" start="2025-08-18T18:04:25.917881" elapsed="0.063120"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-08-13T05:04:17.926531" level="INFO">Clicking button 'css=button[type='submit']'.</msg>
+<msg time="2025-08-18T18:04:25.981302" level="INFO">Clicking button 'css=button[type='submit']'.</msg>
 <arg>css=button[type='submit']</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-08-13T05:04:17.926364" elapsed="0.083448"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>xpath=//span[contains(text(),'จัดการ')]</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-08-13T05:04:18.009969" elapsed="0.225581"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-08-13T05:04:18.235855" level="INFO">Clicking element 'xpath=//span[contains(text(),'จัดการ')]'.</msg>
-<arg>xpath=//span[contains(text(),'จัดการ')]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-08-13T05:04:18.235694" elapsed="0.054185"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-08-13T05:04:18.290183" level="INFO">Clicking element 'xpath=//a[contains(text(),'จัดการซัพพลายเออร์')]'.</msg>
-<arg>xpath=//a[contains(text(),'จัดการซัพพลายเออร์')]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-08-13T05:04:18.290024" elapsed="0.071415"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${SEARCH_SUPPLIER}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-08-13T05:04:18.361581" elapsed="0.037281"/>
-</kw>
-<status status="PASS" start="2025-08-13T05:04:17.758867" elapsed="0.640093"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-08-13T05:04:18.399429" level="INFO">${name} = ทดสอบซัพพลายเออร์ 1234</msg>
-<var>${name}</var>
-<arg>ทดสอบซัพพลายเออร์ 1234</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-08-13T05:04:18.399246" elapsed="0.000211"/>
-</kw>
-<kw name="Search Supplier By Name">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${SEARCH_SUPPLIER}</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-08-13T05:04:18.400087" elapsed="0.021586"/>
-</kw>
-<kw name="Clear Element Text" owner="SeleniumLibrary">
-<arg>${SEARCH_SUPPLIER}</arg>
-<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
-<status status="PASS" start="2025-08-13T05:04:18.421837" elapsed="0.035412"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-08-13T05:04:18.457616" level="INFO">Typing text 'ทดสอบซัพพลายเออร์ 1234' into text field 'id=supplier-search-input'.</msg>
-<arg>${SEARCH_SUPPLIER}</arg>
-<arg>${name}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-08-13T05:04:18.457391" elapsed="0.112848"/>
-</kw>
-<kw name="Press Keys" owner="SeleniumLibrary">
-<msg time="2025-08-13T05:04:18.570704" level="INFO">Sending key(s) ('ENTER',) to id=supplier-search-input element.</msg>
-<msg time="2025-08-13T05:04:18.837722" level="INFO">Pressing special key ENTER to element.</msg>
-<msg time="2025-08-13T05:04:18.837805" level="INFO">Releasing special key ENTER.</msg>
-<arg>${SEARCH_SUPPLIER}</arg>
-<arg>ENTER</arg>
-<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
-<status status="PASS" start="2025-08-13T05:04:18.570386" elapsed="0.270981"/>
+<status status="PASS" start="2025-08-18T18:04:25.981143" elapsed="0.047261"/>
 </kw>
 <kw name="Wait Table Idle">
 <kw name="Run Keyword And Ignore Error" owner="BuiltIn">
 <kw name="Wait Until Element Is Not Visible" owner="SeleniumLibrary">
 <arg>${SPINNERS}</arg>
-<arg>5s</arg>
+<arg>6s</arg>
 <doc>Waits until the element ``locator`` is not visible.</doc>
-<status status="PASS" start="2025-08-13T05:04:18.841856" elapsed="0.006637"/>
+<status status="PASS" start="2025-08-18T18:04:26.028909" elapsed="0.013978"/>
 </kw>
 <arg>Wait Until Element Is Not Visible</arg>
 <arg>${SPINNERS}</arg>
-<arg>5s</arg>
+<arg>6s</arg>
 <doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
-<status status="PASS" start="2025-08-13T05:04:18.841746" elapsed="0.006826"/>
+<status status="PASS" start="2025-08-18T18:04:26.028800" elapsed="0.014168"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-08-13T05:04:19.149040" level="INFO">Slept 300 milliseconds.</msg>
+<msg time="2025-08-18T18:04:26.343297" level="INFO">Slept 300 milliseconds.</msg>
 <arg>0.3s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-08-13T05:04:18.848672" elapsed="0.300486"/>
+<status status="PASS" start="2025-08-18T18:04:26.043067" elapsed="0.300376"/>
 </kw>
-<status status="PASS" start="2025-08-13T05:04:18.841537" elapsed="0.307722"/>
+<status status="PASS" start="2025-08-18T18:04:26.028598" elapsed="0.314976"/>
 </kw>
-<arg>${name}</arg>
-<status status="PASS" start="2025-08-13T05:04:18.399742" elapsed="0.749560"/>
+<status status="PASS" start="2025-08-18T18:04:25.842192" elapsed="0.501456"/>
 </kw>
-<kw name="Click Delete Supplier Button">
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<msg time="2025-08-13T05:04:19.150334" level="FAIL">Variable '${BTN_DELETE_SUPPLIER}' not found.</msg>
-<arg>${BTN_DELETE_SUPPLIER}</arg>
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2025-08-18T18:04:26.344168" level="INFO" html="true">Directory '&lt;a href="file://E:\มหาลัย\โปรเจค\Robot_Pos\screenshots"&gt;E:\มหาลัย\โปรเจค\Robot_Pos\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREEN_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2025-08-18T18:04:26.343862" elapsed="0.000366"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-08-18T18:04:26.344494" level="INFO">Opening url 'http://localhost:5173/management/promotions'</msg>
+<arg>${PROMO_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-08-18T18:04:26.344377" elapsed="0.109388"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${BTN_GO_CREATE_PROMO}</arg>
 <arg>${TIMEOUT}</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="FAIL" start="2025-08-13T05:04:19.149862" elapsed="0.000511">Variable '${BTN_DELETE_SUPPLIER}' not found.</status>
-</kw>
-<kw name="Scroll Element Into View" owner="SeleniumLibrary">
-<arg>${BTN_DELETE_SUPPLIER}</arg>
-<doc>Scrolls the element identified by ``locator`` into view.</doc>
-<status status="NOT RUN" start="2025-08-13T05:04:19.150474" elapsed="0.000021"/>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-18T18:04:26.454017" elapsed="0.039810"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<arg>${BTN_DELETE_SUPPLIER}</arg>
+<msg time="2025-08-18T18:04:26.494287" level="INFO">Clicking element 'id=create-promotion-button'.</msg>
+<arg>${BTN_GO_CREATE_PROMO}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-08-13T05:04:19.150555" elapsed="0.000016"/>
+<status status="PASS" start="2025-08-18T18:04:26.494079" elapsed="0.062074"/>
 </kw>
 <kw name="Wait Table Idle">
-<status status="NOT RUN" start="2025-08-13T05:04:19.150779" elapsed="0.000023"/>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Wait Until Element Is Not Visible" owner="SeleniumLibrary">
+<arg>${SPINNERS}</arg>
+<arg>6s</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" start="2025-08-18T18:04:26.556807" elapsed="0.020502"/>
 </kw>
-<status status="FAIL" start="2025-08-13T05:04:19.149623" elapsed="0.001260">Variable '${BTN_DELETE_SUPPLIER}' not found.</status>
+<arg>Wait Until Element Is Not Visible</arg>
+<arg>${SPINNERS}</arg>
+<arg>6s</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-08-18T18:04:26.556684" elapsed="0.020706"/>
 </kw>
-<kw name="Confirm Delete Dialog">
-<status status="NOT RUN" start="2025-08-13T05:04:19.151078" elapsed="0.000023"/>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-18T18:04:26.877782" level="INFO">Slept 300 milliseconds.</msg>
+<arg>0.3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-18T18:04:26.577493" elapsed="0.300371"/>
 </kw>
-<kw name="Search Supplier By Name">
-<arg>${name}</arg>
-<status status="NOT RUN" start="2025-08-13T05:04:19.151280" elapsed="0.000030"/>
+<status status="PASS" start="2025-08-18T18:04:26.556445" elapsed="0.321490"/>
 </kw>
-<kw name="Verify Supplier Not Exists">
-<arg>${name}</arg>
-<status status="NOT RUN" start="2025-08-13T05:04:19.151427" elapsed="0.000021"/>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_PROMO_NAME}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-18T18:04:26.878097" elapsed="0.011002"/>
 </kw>
-<status status="FAIL" start="2025-08-13T05:04:17.758057" elapsed="1.393526">Variable '${BTN_DELETE_SUPPLIER}' not found.</status>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${INPUT_PROMO_NAME}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-18T18:04:26.889315" elapsed="0.016109"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-18T18:04:26.905793" level="INFO">Typing text 'น้ำยาล้างจาน' into text field 'id=create-promotion-name-input'.</msg>
+<arg>${INPUT_PROMO_NAME}</arg>
+<arg>${PROMO_NAME_VAL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-18T18:04:26.905616" elapsed="0.148367"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${INPUT_START_DATE}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-18T18:04:27.054277" elapsed="0.015594"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-18T18:04:27.070266" level="INFO">Typing text '18/08/2025' into text field 'id=create-promotion-start-date'.</msg>
+<arg>${INPUT_START_DATE}</arg>
+<arg>${START_DATE_VAL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-18T18:04:27.070072" elapsed="0.139305"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-18T18:04:27.409791" level="INFO">Slept 200 milliseconds.</msg>
+<arg>0.2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-18T18:04:27.209587" elapsed="0.200342"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${INPUT_END_DATE}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-18T18:04:27.410418" elapsed="0.036771"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-08-18T18:04:27.447562" level="INFO">Typing text '18/09/2025' into text field 'id=create-promotion-end-date'.</msg>
+<arg>${INPUT_END_DATE}</arg>
+<arg>${END_DATE_VAL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-08-18T18:04:27.447382" elapsed="0.102867"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-18T18:04:27.750944" level="INFO">Slept 200 milliseconds.</msg>
+<arg>0.2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-18T18:04:27.550471" elapsed="0.200555"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_PRODUCT_COMBO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-18T18:04:27.751245" elapsed="0.026367"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-08-18T18:04:27.778024" level="INFO">Clicking element 'id=create-promotion-product-combobox'.</msg>
+<msg time="2025-08-18T18:04:28.941740" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-18.png"&gt;&lt;img src="selenium-screenshot-18.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-08-18T18:04:28.941899" level="FAIL">ElementClickInterceptedException: Message: element click intercepted: Element &lt;input class="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0" placeholder="ค้นหาหรือเลือกสินค้า..." id="create-promotion-product-combobox" role="combobox" type="text" aria-expanded="false" aria-autocomplete="list" data-headlessui-state="" value=""&gt; is not clickable at point (960, 497). Other element would receive the click: &lt;div class="react-datepicker__day-names"&gt;...&lt;/div&gt;
+  (Session info: chrome=139.0.7258.128)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6c6546b25+79621]
+	GetHandleVerifier [0x0x7ff6c6546b80+79712]
+	(No symbol) [0x0x7ff6c62dc0ea]
+	(No symbol) [0x0x7ff6c633af69]
+	(No symbol) [0x0x7ff6c6338902]
+	(No symbol) [0x0x7ff6c6335941]
+	(No symbol) [0x0x7ff6c6334831]
+	(No symbol) [0x0x7ff6c6326078]
+	(No symbol) [0x0x7ff6c635b13a]
+	(No symbol) [0x0x7ff6c6325926]
+	(No symbol) [0x0x7ff6c635b350]
+	(No symbol) [0x0x7ff6c63833d0]
+	(No symbol) [0x0x7ff6c635af13]
+	(No symbol) [0x0x7ff6c6324151]
+	(No symbol) [0x0x7ff6c6324ee3]
+	GetHandleVerifier [0x0x7ff6c680683d+2962461]
+	GetHandleVerifier [0x0x7ff6c6800b5d+2938685]
+	GetHandleVerifier [0x0x7ff6c681f71d+3064573]
+	GetHandleVerifier [0x0x7ff6c6560c6e+186446]
+	GetHandleVerifier [0x0x7ff6c6568a3f+218655]
+	GetHandleVerifier [0x0x7ff6c654f914+115956]
+	GetHandleVerifier [0x0x7ff6c654fac9+116393]
+	GetHandleVerifier [0x0x7ff6c6535ef8+10968]
+	BaseThreadInitThunk [0x0x7ffab79be8d7+23]
+	RtlUserThreadStart [0x0x7ffab819c34c+44]
+</msg>
+<arg>${INPUT_PRODUCT_COMBO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="FAIL" start="2025-08-18T18:04:27.777851" elapsed="1.166079">ElementClickInterceptedException: Message: element click intercepted: Element &lt;input class="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0" placeholder="ค้นหาหรือเลือกสินค้า..." id="create-promotion-product-combobox" role="combobox" type="text" aria-expanded="false" aria-autocomplete="list" data-headlessui-state="" value=""&gt; is not clickable at point (960, 497). Other element would receive the click: &lt;div class="react-datepicker__day-names"&gt;...&lt;/div&gt;
+  (Session info: chrome=139.0.7258.128)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6c6546b25+79621]
+	GetHandleVerifier [0x0x7ff6c6546b80+79712]
+	(No symbol) [0x0x7ff6c62dc0ea]
+	(No symbol) [0x0x7ff6c633af69]
+	(No symbol) [0x0x7ff6c6338902]
+	(No symbol) [0x0x7ff6c6335941]
+	(No symbol) [0x0x7ff6c6334831]
+	(No symbol) [0x0x7ff6c6326078]
+	(No symbol) [0x0x7ff6c635b13a]
+	(No symbol) [0x0x7ff6c6325926]
+	(No symbol) [0x0x7ff6c635b350]
+	(No symbol) [0x0x7ff6c63833d0]
+	(No symbol) [0x0x7ff6c635af13]
+	(No symbol) [0x0x7ff6c6324151]
+	(No symbol) [0x0x7ff6c6324ee3]
+	GetHandleVerifier [0x0x7ff6c680683d+2962461]
+	GetHandleVerifier [0x0x7ff6c6800b5d+2938685]
+	GetHandleVerifier [0x0x7ff6c681f71d+3064573]
+	GetHandleVerifier [0x0x7ff6c6560c6e+186446]
+	GetHandleVerifier [0x0x7ff6c6568a3f+218655]
+	GetHandleVerifier [0x0x7ff6c654f914+115956]
+	GetHandleVerifier [0x0x7ff6c654fac9+116393]
+	GetHandleVerifier [0x0x7ff6c6535ef8+10968]
+	BaseThreadInitThunk [0x0x7ffab79be8d7+23]
+	RtlUserThreadStart [0x0x7ffab819c34c+44]
+</status>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${INPUT_PRODUCT_COMBO}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-08-18T18:04:28.944211" elapsed="0.000032"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>${INPUT_PRODUCT_COMBO}</arg>
+<arg>${PRODUCT_NAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-08-18T18:04:28.944378" elapsed="0.000026"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>0.3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-08-18T18:04:28.944505" elapsed="0.000019"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${PRODUCT_OPTION_BY_TEXT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="NOT RUN" start="2025-08-18T18:04:28.944606" elapsed="0.000016"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${PRODUCT_OPTION_BY_TEXT}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-08-18T18:04:28.944699" elapsed="0.000016"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>0.2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-08-18T18:04:28.944789" elapsed="0.000015"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${LOT_FIRST_CHECKBOX}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="NOT RUN" start="2025-08-18T18:04:28.944873" elapsed="0.000014"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${LOT_FIRST_CHECKBOX}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-08-18T18:04:28.944956" elapsed="0.000014"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>0.2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-08-18T18:04:28.945067" elapsed="0.000014"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_DISCOUNT_PRICE}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2025-08-18T18:04:28.945147" elapsed="0.000013"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${INPUT_DISCOUNT_PRICE}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-08-18T18:04:28.945224" elapsed="0.000013"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>${INPUT_DISCOUNT_PRICE}</arg>
+<arg>${DISCOUNT_PRICE_VAL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-08-18T18:04:28.945306" elapsed="0.000012"/>
+</kw>
+<kw name="Click Save Promotion">
+<status status="NOT RUN" start="2025-08-18T18:04:28.945442" elapsed="0.000021"/>
+</kw>
+<kw name="Click If Exists">
+<arg>${SWAL_CONFIRM}</arg>
+<status status="NOT RUN" start="2025-08-18T18:04:28.945562" elapsed="0.000074"/>
+</kw>
+<kw name="Wait Table Idle">
+<status status="NOT RUN" start="2025-08-18T18:04:28.945735" elapsed="0.000015"/>
+</kw>
+<doc>ล็อกอิน → ไปหน้าโปรโมชั่น → เพิ่มโปรโมชั่น → กรอกชื่อ/วันที่ → เลือกสินค้าและล็อต → ใส่ราคา → บันทึก</doc>
+<status status="FAIL" start="2025-08-18T18:04:25.840010" elapsed="3.105868">ElementClickInterceptedException: Message: element click intercepted: Element &lt;input class="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0" placeholder="ค้นหาหรือเลือกสินค้า..." id="create-promotion-product-combobox" role="combobox" type="text" aria-expanded="false" aria-autocomplete="list" data-headlessui-state="" value=""&gt; is not clickable at point (960, 497). Other element would receive the click: &lt;div class="react-datepicker__day-names"&gt;...&lt;/div&gt;
+  (Session info: chrome=139.0.7258.128)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6c6546b25+79621]
+	GetHandleVerifier [0x0x7ff6c6546b80+79712]
+	(No symbol) [0x0x7ff6c62dc0ea]
+	(No symbol) [0x0x7ff6c633af69]
+	(No symbol) [0x0x7ff6c6338902]
+	(No symbol) [0x0x7ff6c6335941]
+	(No symbol) [0x0x7ff6c6334831]
+	(No symbol) [0x0x7ff6c6326078]
+	(No symbol) [0x0x7ff6c635b13a]
+	(No symbol) [0x0x7ff6c6325926]
+	(No symbol) [0x0x7ff6c635b350]
+	(No symbol) [0x0x7ff6c63833d0]
+	(No symbol) [0x0x7ff6c635af13]
+	(No symbol) [0x0x7ff6c6324151]
+	(No symbol) [0x0x7ff6c6324ee3]
+	GetHandleVerifier [0x0x7ff6c680683d+2962461]
+	GetHandleVerifier [0x0x7ff6c6800b5d+2938685]
+	GetHandleVerifier [0x0x7ff6c681f71d+3064573]
+	GetHandleVerifier [0x0x7ff6c6560c6e+186446]
+	GetHandleVerifier [0x0x7ff6c6568a3f+218655]
+	GetHandleVerifier [0x0x7ff6c654f914+115956]
+	GetHandleVerifier [0x0x7ff6c654fac9+116393]
+	GetHandleVerifier [0x0x7ff6c6535ef8+10968]
+	BaseThreadInitThunk [0x0x7ffab79be8d7+23]
+	RtlUserThreadStart [0x0x7ffab819c34c+44]
+</status>
 </test>
 <kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" start="2025-08-13T05:04:19.152083" elapsed="2.144282"/>
+<status status="PASS" start="2025-08-18T18:04:28.946448" elapsed="2.309842"/>
 </kw>
-<status status="FAIL" start="2025-08-13T05:04:15.459802" elapsed="5.836636"/>
+<status status="FAIL" start="2025-08-18T18:04:24.073638" elapsed="7.182726"/>
 </suite>
 <statistics>
 <total>
@@ -180,10 +361,9 @@
 <tag>
 </tag>
 <suite>
-<stat name="Delete" id="s1" pass="0" fail="1" skip="0">Delete</stat>
+<stat name="Create" id="s1" pass="0" fail="1" skip="0">Create</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-08-13T05:04:15.460013" level="ERROR">Error in file 'E:\มหาลัย\โปรเจค\Robot_Pos\suppliers_tests\delete.robot' on line 16: Setting variable '${BTN_DELETE_SUPPLIER} xpath=//button[@title="ลบซัพพลายเออร์" or starts-with(@id,"delete-supplier-button-")]' failed: Invalid variable name '${BTN_DELETE_SUPPLIER} xpath=//button[@title="ลบซัพพลายเออร์" or starts-with(@id,"delete-supplier-button-")]'.</msg>
 </errors>
 </robot>
