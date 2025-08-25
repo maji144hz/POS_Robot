@@ -5,121 +5,120 @@ Library           random
 
 Suite Setup       Open Browser To Login Page
 Suite Teardown    Close All Browsers
-Test Setup        Login And Go To Status Page
+Test Setup        Login And Go To Category Page
 
 *** Variables ***
-${BASE_URL}              http://localhost:5173
-${BROWSER}               chrome
-${VALID USER}            admin
-${VALID PASSWORD}        12345678
-${TIMEOUT}               20s
+${BASE_URL}           http://localhost:5173
+${BROWSER}            chrome
+${VALID USER}         admin
+${VALID PASSWORD}     12345678
+${CATEGORY_BASE}      ทดสอบหมวดหมู่
+${TIMEOUT}            20s
+${SCREEN_DIR}         screenshots
 
-${STATUS_BASE}           ทดสอบสถานะ
+# ===== Locators =====
+# สร้าง (Create)
+${BTN_ADD_CATEGORY}   css=button[data-tip='เพิ่มหมวดหมู่']
+${CREATE_INPUT}       xpath=//input[@placeholder='ชื่อประเภทสินค้า']
+${BTN_SAVE_CREATE}    xpath=//button[contains(normalize-space(.),'บันทึก')]
 
-# ===== Locators: สถานะสินค้า =====
-# Create
-${BTN_ADD_STATUS}        xpath=//button[.//span[contains(normalize-space(.),'เพิ่มสถานะสินค้า')] or contains(@data-tip,'เพิ่มสถานะสินค้า')]
-${INPUT_STATUS}          xpath=//input[@placeholder='ชื่อสถานะสินค้า' or @id='create-status-name-input']
-${BTN_SAVE_CREATE}       xpath=//button[contains(normalize-space(.),'บันทึก') or contains(normalize-space(.),'บันทึกข้อมูล')]
+# ค้นหา
+${SEARCH_CATEGORY}    id=category-search-input
 
-# Search
-${SEARCH_STATUS}         id=status-search-input
+# แก้ไข (Edit)
+${BTN_EDIT_SINGLE}    css=button[title="แก้ไขหมวดหมู่"]
+${EDIT_INPUT}         id=edit-category-name-input
+${BTN_SAVE_EDIT}      xpath=//button[contains(normalize-space(.),'บันทึกข้อมูล')]
 
-# Edit (กดปุ่มแก้ไขโดยตรงหลังกรอง)
-${BTN_EDIT_SINGLE}       xpath=(//button[@title='แก้ไขสถานะสินค้า' or starts-with(@id,'edit-status-button-')])[1]
-${EDIT_INPUT}            id=edit-status-name-input
-${BTN_SAVE_EDIT}         xpath=//button[contains(normalize-space(.),'บันทึกข้อมูล') or contains(normalize-space(.),'บันทึก')]
-
-# Misc
-${SPINNERS}              css=.ant-spin,.loading,.v-overlay--active,.swal2-container
-${SWAL_CONFIRM}          css=button.swal2-confirm
-
+# ตัวโหลด/แจ้งเตือน (ถ้ามี)
+${SPINNERS}           css=.ant-spin,.loading,.v-overlay--active
+${SWAL_CONFIRM}       css=button.swal2-confirm
 
 *** Test Cases ***
-เพิ่มและแก้ไขสถานะสินค้า
-    ${r1}=            Evaluate    random.randint(1000, 9999)    random
-    ${old}=           Set Variable    ${STATUS_BASE} ${r1}
-    ${r2}=            Evaluate    random.randint(1000, 9999)    random
-    ${new}=           Set Variable    ${STATUS_BASE} ${r2}
+เพิ่มและแก้ไขหมวดหมู่ (คลิกปุ่มแก้ไขด้วย title)
+    ${R1}=        Evaluate    random.randint(1000, 9999)    random
+    ${name}=      Set Variable    ${CATEGORY_BASE} ${R1}
 
-    Log To Console    สร้างสถานะ: ${old}
-    Create Status                  ${old}
+    Create Category                 ${name}
+    Search Category By Name         ${name}
+    Click Edit Category Button
 
-    Log To Console    ค้นหาเพื่อแก้ไข: ${old}
-    Apply Status Search Filter     ${old}
+    ${R2}=        Evaluate    random.randint(1000, 9999)    random
+    ${new_name}=  Set Variable    ${name} (แก้ไข ${R2})
+    Fill Edit Dialog And Save       ${new_name}
 
-    Log To Console    แก้ไขชื่อเป็น: ${new}
-    Click Status Edit Button
-    Fill Status Edit And Save      ${new}
-
-    Log To Console    ตรวจสอบชื่อใหม่: ${new}
-    Apply Status Search Filter     ${new}
-    Page Should Contain            ${new}
-
+    Search Category By Name         ${new_name}
+    Screenshot Row Containing Text  ${new_name}    edited_category.png
 
 *** Keywords ***
-# ===== Browser & Navigate =====
 Open Browser To Login Page
     Open Browser    ${BASE_URL}    ${BROWSER}
     Maximize Browser Window
     Set Selenium Timeout    ${TIMEOUT}
 
-Login And Go To Status Page
+Login And Go To Category Page
     Wait Until Element Is Visible    css=input[name='username']    ${TIMEOUT}
     Input Text    css=input[name='username']    ${VALID USER}
     Input Text    css=input[name='password']    ${VALID PASSWORD}
     Click Button  css=button[type='submit']
     Wait Until Element Is Visible    xpath=//span[contains(text(),'จัดการ')]    ${TIMEOUT}
     Click Element    xpath=//span[contains(text(),'จัดการ')]
-    ${has_manage}=    Run Keyword And Return Status    Page Should Contain Element    xpath=//a[contains(normalize-space(.),'จัดการสถานะสินค้า')]
-    Run Keyword If    ${has_manage}                 Click Element    xpath=//a[contains(normalize-space(.),'จัดการสถานะสินค้า')]
-    Run Keyword If    not ${has_manage}             Click Element    xpath=//a[contains(normalize-space(.),'สถานะสินค้า')]
-    Wait Until Element Is Visible    ${BTN_ADD_STATUS}    ${TIMEOUT}
+    Click Element    xpath=//a[contains(text(),'ประเภทสินค้า')]
+    Wait Until Element Is Visible    ${BTN_ADD_CATEGORY}    ${TIMEOUT}
 
 # ===== Create =====
-Create Status
+Create Category
     [Arguments]    ${name}
-    Click Element                         ${BTN_ADD_STATUS}
-    Wait Until Element Is Visible         ${INPUT_STATUS}    ${TIMEOUT}
-    Clear Element Text                    ${INPUT_STATUS}
-    Input Text                            ${INPUT_STATUS}    ${name}
-    Click Element                         ${BTN_SAVE_CREATE}
-    Click If Exists                       ${SWAL_CONFIRM}
-    Wait Until Element Is Not Visible     ${INPUT_STATUS}    ${TIMEOUT}
-    Wait Table Idle
+    Click Element                      ${BTN_ADD_CATEGORY}
+    Wait Until Element Is Visible      ${CREATE_INPUT}    ${TIMEOUT}
+    Clear Element Text                 ${CREATE_INPUT}
+    Input Text                         ${CREATE_INPUT}    ${name}
+    Click Element                      ${BTN_SAVE_CREATE}
+    Click If Exists                    ${SWAL_CONFIRM}
+    Wait Until Element Is Not Visible  ${CREATE_INPUT}    ${TIMEOUT}
 
 # ===== Search =====
-Apply Status Search Filter
+Search Category By Name
     [Arguments]    ${name}
-    Wait Until Element Is Visible    ${SEARCH_STATUS}    ${TIMEOUT}
-    Press Keys                       ${SEARCH_STATUS}    CTRL+A
-    Press Keys                       ${SEARCH_STATUS}    BACKSPACE
-    Input Text                       ${SEARCH_STATUS}    ${name}
-    Press Keys                       ${SEARCH_STATUS}    ENTER
+    Wait Until Element Is Visible    ${SEARCH_CATEGORY}    ${TIMEOUT}
+    Press Keys                       ${SEARCH_CATEGORY}    CTRL+A
+    Press Keys                       ${SEARCH_CATEGORY}    BACKSPACE
+    Input Text                       ${SEARCH_CATEGORY}    ${name}
+    Press Keys                       ${SEARCH_CATEGORY}    ENTER
     Wait Table Idle
+    Wait Until Page Contains         ${name}    ${TIMEOUT}
 
 Wait Table Idle
     Run Keyword And Ignore Error     Wait Until Element Is Not Visible    ${SPINNERS}    5s
     Sleep    0.3s
 
 # ===== Edit =====
-Click Status Edit Button
+Click Edit Category Button
     Wait Until Page Contains Element    ${BTN_EDIT_SINGLE}    ${TIMEOUT}
     Scroll Element Into View            ${BTN_EDIT_SINGLE}
     ${clicked}=    Run Keyword And Return Status    Click Element    ${BTN_EDIT_SINGLE}
     Run Keyword If    not ${clicked}    ${el}=    Get WebElement    ${BTN_EDIT_SINGLE}
     Run Keyword If    not ${clicked}    Execute Javascript    arguments[0].click();    ${el}
-    Wait Table Idle
 
-Fill Status Edit And Save
+Fill Edit Dialog And Save
     [Arguments]    ${new_name}
-    Wait Until Element Is Visible       ${EDIT_INPUT}    ${TIMEOUT}
-    Clear Element Text                  ${EDIT_INPUT}
-    Input Text                          ${EDIT_INPUT}    ${new_name}
-    Click Element                       ${BTN_SAVE_EDIT}
-    Click If Exists                     ${SWAL_CONFIRM}
-    Wait Until Element Is Not Visible   ${EDIT_INPUT}    ${TIMEOUT}
-    Wait Table Idle
+    Wait Until Element Is Visible      ${EDIT_INPUT}    ${TIMEOUT}
+    Clear Element Text                 ${EDIT_INPUT}
+    Input Text                         ${EDIT_INPUT}    ${new_name}
+    Click Element                      ${BTN_SAVE_EDIT}
+    Click If Exists                    ${SWAL_CONFIRM}
+    Wait Until Element Is Not Visible  ${EDIT_INPUT}    ${TIMEOUT}
+
+# ===== Screenshot =====
+Screenshot Row Containing Text
+    [Arguments]    ${text}    ${filename}
+    ${ROW1}=    Set Variable    xpath=(//tbody//tr[.//*[contains(normalize-space(.),"${text}")]])[1]
+    ${has1}=    Run Keyword And Return Status    Page Should Contain Element    ${ROW1}
+    ${TARGET}=  Set Variable If    ${has1}    ${ROW1}    xpath=(//*[@role='row'][.//*[contains(normalize-space(.),"${text}")]])[1]
+    Wait Until Page Contains Element    ${TARGET}    ${TIMEOUT}
+    Scroll Element Into View            ${TARGET}
+    Create Directory                    ${SCREEN_DIR}
+    Capture Element Screenshot          ${TARGET}    ${SCREEN_DIR}${/}${filename}
 
 # ===== Utils =====
 Click If Exists
